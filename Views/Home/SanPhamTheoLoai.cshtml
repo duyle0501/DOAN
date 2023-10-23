@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "SanPhamTheoLoai";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<TDanhMucSp>
+<form asp-area="admin" asp-controller="HomeAdmin" asp-action="TimKiemSanPham" method="post">
+    <input type="text" name="tenSanPham" placeholder="Tên sản phẩm">
+
+    <input type="submit" value="Tìm kiếm">
+</form>
+@foreach (var item in Model)
+{
+    @await Html.PartialAsync("PartialSanPham",item)
+}
+<div class="product__pagination">
+    @Html.PagedListPager(Model,page=>Url.Action("SanPhamTheoLoai",new{page=page ,maloai=ViewBag.maloai}))
+</div>
+

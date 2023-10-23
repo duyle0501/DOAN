@@ -1,0 +1,71 @@
+﻿@model X.PagedList.IPagedList<TChiTietSanPham>
+@using ShopAoQuan.Models;
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "ChiTietSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>ChiTietSanPham</h1>
+
+<p>
+    <a asp-action="ThemSanPhamMoiChiTiet">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                Ảnh Đại diện
+            </th>
+            <th>
+                Mã Sản Phẩm 
+            </th>
+            
+            
+            <th>
+                Đơn Giá Bán 
+            </th>
+            <th>
+                Giảm Giá 
+            </th>
+            <th>
+                Số Lượng Tồn 
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="table-primary">
+                <td>
+                    <img width="50" height="50" src="~/imgDA/@item.AnhDaiDien">
+                </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.MaSp)
+            </td>
+            
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGiaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiamGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slton)
+            </td>
+            
+            <td>
+                    <a asp-action="SuaSanPhamChiTiet" asp-route-maSanPham="@item.MaChiTietSp">Edit</a> |
+                 |
+                    <a asp-action="XoaSanPhamChiTiet" asp-route-maSanPham="@item.MaChiTietSp">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@Html.PagedListPager(Model,page=>Url.Action("ChiTietSanPham",new {page =page}),new X.PagedList.Web.Common.PagedListRenderOptions(){
+    LiElementClasses=new List<String>{"page-item"},
+    PageClasses=new List<String> {"page-link"}
+})

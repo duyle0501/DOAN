@@ -1,0 +1,242 @@
+﻿@model PayMent
+@{
+    ViewData["Title"] = "ThemHoaDon";
+    Layout = "~/Views/Shared/_FrontEnd.cshtml";
+    List<ShopAoQuan.Models.CartItem> Carts = ViewBag.GioHang;
+    var phiship = 30000;
+  
+    
+}
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img src="../DA/img/logo.png" alt=""></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a a asp-controller="Cart" asp-action="AddToCart"><i class="fa fa-shopping-bag"></i> <span>1</span></a></li>
+        </ul>
+        <div class="header__cart__price">item: <span>.00</span></div>
+    </div>
+    <div class="humberger__menu__widget">
+        <div class="header__top__right__language">
+            <img src="../imgDA/co-quoc-gia-viet-nam.jpg" alt="">
+            <div>English</div>
+            <span class="arrow_carrot-down"></span>
+            <ul>
+                <li><<a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i>Đăng Nhập</a>></li>
+                <li>
+                    <a asp-area="admin"
+                       asp-controller="HomeAdmin" asp-action="DangKyTaiKhoan"><i class="fa fa-user"></i>Đăng Ký </a>
+                </li>
+            </ul>
+        </div>
+        <div class="header__top__right__auth">
+            <a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i>Đăng Nhập</a>
+        </div>
+        <div class="header__top__right__auth">
+            <a asp-area="admin"
+               asp-controller="HomeAdmin" asp-action="DangKyTaiKhoan"><i class="fa fa-user"></i>Đăng Ký </a>
+        </div>
+    </div>
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a asp-controller="Access" asp-action="Logout">Home</a></li>
+            <li><a href="./shop-grid.html">Shop</a></li>
+            <li>
+                <a href="#">Pages</a>
+                <ul class="header__menu__dropdown">
+                    <li><a href="./shop-details.html">Shop Details</a></li>
+                    <li><a href="https://localhost:7276/Cart">Shoping Cart</a></li>
+                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul>
+            </li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+    <div class="header__top__right__social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+    </div>
+    <div class="humberger__menu__contact">
+        <ul>
+            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+            <li>Free Shipping for all Order of $99</li>
+        </ul>
+    </div>
+</div>
+<!-- Humberger End -->
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i> LND@ou.edu.com</li>
+                            <li>Free Shipping for all Order of $99</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                        <div class="header__top__right__language">
+
+                            <div>Tài Khoản </div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i>Đăng Nhập </a></li>
+                                <li>
+                                    <a a asp-area="admin" asp-controller="HomeAdmin" asp-action="DangKyTaiKhoan"><i class="fa fa-user"></i>Đăng Ký</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header__top__right__auth">
+                        </div>
+                        <div class="header__top__right__auth">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a asp-controller="Home" asp-action="Index"><img src="../imgDA/Logo.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a href="./shop-grid.html">Shop</a></li>
+                        <li>
+                            <a href="#">Pages</a>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="./shop-details.html">Shop Details</a></li>
+                                <li><a a asp-controller="Cart" asp-action="AddToCart" asp-route-id="aokhoacduden1">Shoping Cart</a></li>
+                                <li><a href="./checkout.html">Check Out</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>@Carts.Count()</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->
+<!-- Billing -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>
+                    <span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
+                </h6>
+            </div>
+        </div>
+        <div class="checkout__form">
+            <h4>Billing Details</h4>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="checkout__input">
+                            <p>FullName<span>*</span></p>
+                            <input asp-for ="FullName" placeholder="Họ và Tên" type="text">
+                        </div>
+                        
+                        <div class="checkout__input">
+                            <p>Address<span>*</span></p>
+                            <input asp-for="Address" placeholder="Địa chỉ nhận hàng" type="text">
+                            
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Phone<span>*</span></p>
+                                    <input asp-for ="Phone" placeholder="Số điện thoại" type="text">
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="checkout__input">
+                            <p>Order notes<span>*</span></p>
+                            <input type="text"
+                                   placeholder="Notes about your order, e.g. special notes for delivery.">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            
+
+                            <h4>Đơn hàng của bạn</h4>
+                            @if (Carts.Count() > 0)
+                            {
+                                <div class="checkout__order__products">Tên Sản Phẩm<span>Giá tiền </span></div>
+                                foreach (var item in Carts)
+                                {
+                                    
+                                    <ul>
+                                        <li>@item.TenHH<span>@item.DonGia</span></li>
+                                        
+                                    </ul>
+
+                                }
+                            }
+                            
+                            <div class="checkout__order__subtotal">Tổng tiền <span>@Carts.Sum(x=>x.ThanhTien)</span></div>
+                            
+                            <div class="checkout__order__subtotal">Phí Ship <span>@phiship.0000</span></div>
+                            <div class="checkout__order__total">Tổng hóa đơn  <span>@Carts.Sum(x=>x.ThanhTien+phiship)</span></div>
+                           
+                           
+                            <p>@TempData["Message"]</p>
+                            <a asp-action="Success" asp-controller="PayMent"><button type="submit" class="site-btn">Thanh Toán </button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->
+

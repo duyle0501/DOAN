@@ -1,0 +1,24 @@
+﻿@using ShopAoQuan.Models;
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<TDanhMucSp>
+@{
+    ViewData["Title"] = "TimKiemSanPham";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>TimKiemSanPham</h1>
+<form action="#">
+    <div class="hero__search__categories">
+        All Categories
+        <span class="arrow_carrot-down"></span>
+    </div>
+    <input type="text" placeholder="What do yo u need?">
+    <button type="submit" class="site-btn">SEARCH</button>
+</form>
+@foreach (var item in Model)
+{
+    @await Html.PartialAsync("PartialSanPham",item)
+}
+<div class="product__pagination">
+    @Html.PagedListPager(Model,page=>Url.Action("SanPhamTheoLoai",new{page=page ,maloai=ViewBag.maloai}))
+</div>
